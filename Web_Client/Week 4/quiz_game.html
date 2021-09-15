@@ -27,7 +27,7 @@ let result =document.querySelector("#result")
 wrongAnswerButton.forEach(function (wrongAnswerButton){// loop repeat
     wrongAnswerButton.addEventListener('click',function () {// add an event listener for each wrong answer
         result.innerHTML='wrong answer try again?'
-        correctAnswerButton.style.backgroundColor=defaultButtonColor++9
+        correctAnswerButton.style.backgroundColor=defaultButtonColor
     })
 })
 
