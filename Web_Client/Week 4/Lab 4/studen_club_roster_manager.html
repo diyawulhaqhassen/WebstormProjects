@@ -61,37 +61,54 @@
     let addStudentButton=document.querySelector('#add-student')
     let   removeStudent=document.querySelector('#remove-selected-students')
     let studentList=document.querySelector('#student-list')
+    let studentCount=document.querySelector('#student-count')
+     studentCount.innerHTML=0
+    let  numberOfStudent=0
+
+
 
 
     addStudentButton.addEventListener('click',function (){
         let studentNameText = studentName.value
-        if (studentNameText.length<1){
-            alert('Student Name required')
-        }
+
         let studentIDValue=studentID.value
         let id=studentID.value
         let GPA=studentGPA.value
+
+        let errorMessage=[]
+        console.log(errorMessage)
+
+            if (studentNameText.length<1){
+                errorMessage.push('Student Name required')
+                alert('Student Name required')
+        }
         if(GPA == null){
-            alert('Student GPA required')
+            //alert('Student GPA required')
+            errorMessage.push('Student GPA required')
             return
         }
         if(id.length === 0){
-            alert('Please Enter Student' )
+            errorMessage.push('Please Enter Student')
+            //alert('Please Enter Student' )
             return;
         }
         //id.isempty = function () { }
 
         if(GPA<=0 ||GPA>4){
-            alert('Student GPA must be between 0-4 ' )
+            errorMessage.push('Student GPA must be between 0-4')
+            //alert('Student GPA must be between 0-4 ' )
             return;
 
         }
         let  listOfStudent= document.createElement('li')
         listOfStudent.innerHTML=`${studentNameText}, id ${id},GPA${GPA}`
         studentList.appendChild(listOfStudent)
-        studentNameText.value=''
-        id.value=''
-        GPA.value=''
+        numberOfStudent++
+        studentCount.innerHTML=numberOfStudent
+        studentName.value=''
+
+        studentID.value=''
+        studentGPA.value=''
 
         //studentList++
         listOfStudent.addEventListener("click", function (){
